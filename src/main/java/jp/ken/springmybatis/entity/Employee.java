@@ -1,19 +1,39 @@
 package jp.ken.springmybatis.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import jp.ken.springmybatis.model.ErrorCheckGroup1;
+
 public class Employee {
 
-	private Integer id;
 
-	private String fullname;
+	private Integer id;
 	
+	@NotEmpty(groups=ErrorCheckGroup1.class,
+			message="Please enter your name")
+	private String fullname;
+
+	@NotEmpty(groups=ErrorCheckGroup1.class,
+			message="Please enter your email")
+	@Email(groups=ErrorCheckGroup1.class,
+			message="Please enter valid email")
 	private String email;
 	
+	@NotEmpty(groups=ErrorCheckGroup1.class,
+			message="Please enter your gender")
 	private String gender;
 	
+	@NotEmpty(groups=ErrorCheckGroup1.class,
+			message="Please enter your hobbies")
 	private String hobbies;
 	
+	@NotEmpty(groups=ErrorCheckGroup1.class,
+			message="Please enter your counry")
 	private String country;
 	
+	@NotEmpty(groups=ErrorCheckGroup1.class,
+			message="Please enter your address")
 	private String address;
 
 	public Integer getId() {

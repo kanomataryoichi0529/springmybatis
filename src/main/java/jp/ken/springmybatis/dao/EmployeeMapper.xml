@@ -58,7 +58,13 @@
 	
 	</update>
 	
+	<select id="getByName" resultType="employee" resultMap="result">
 
+		SELECT * FROM employee 
+		WHERE 
+			fullname　like '%#{employee}%'
+
+	</select>
 
 
 

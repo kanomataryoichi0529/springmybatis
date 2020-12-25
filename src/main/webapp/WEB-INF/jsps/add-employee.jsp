@@ -10,29 +10,51 @@
 <body>
 	<h1>Add Employee</h1>
 	<s:form modelAttribute="employee" action="saveProcess">
+	<p class="error">${errorMessage}</p>
 	
 		<input type = "hidden" value = "${employee.hobbies}" id="hiddenTxt"/>
 		<s:hidden path="id" />
 		
-		Employee Name:<s:input path="fullname" /><br/>
-		
-		Employee Email:<s:input path="email" /><br/>
-		
-		Gender:<s:radiobutton path="gender" value="Male"/>Male
-		<s:radiobutton path="gender" value="Female"/>Female<br/>
-		
-		Interests:<s:checkbox path="hobbies" value="Sports"/>Sports
-		<s:checkbox path="hobbies" value="Books"/>Books
-		<s:checkbox path="hobbies" value="Swimming"/>Swimming
-		<s:checkbox path="hobbies" value="Cycling"/>Cycling<br/>
-		
-		Country:<s:select path="country">
-			<s:option value="Japan">Japan</s:option>
-			<s:option value="America">America</s:option>
-			<s:option value="China">China</s:option>
-		</s:select><br/>
-		
-		Address:<s:textarea path="address"/><br/>
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><s:input path="fullname" size="50" /></td>
+				<td><s:errors path="fullname" element="div" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<td>email:</td>
+				<td><s:input path="email" size="50" /></td>
+				<td><s:errors path="email" element="div" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<td>gender:</td>
+				<td><s:radiobutton path="gender" value="Male" />Male <s:radiobutton
+						path="gender" value="Female" />Female</td>
+				<td><s:errors path="gender" element="div" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<td>hobbies:</td>
+				<td><s:checkbox path="hobbies" value="Sports" />Sports
+				<s:checkbox path="hobbies" value="Books" />Books
+				<s:checkbox path="hobbies" value="Swimming" />Swimming
+				<s:checkbox path="hobbies" value="Cycling" />Cycling</td>
+				<td><s:errors path="hobbies" element="div" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<td>country:</td>
+				<td><s:select path="country">
+					<s:option value="Japan">Japan</s:option>
+					<s:option value="America">America</s:option>
+					<s:option value="China">China</s:option>
+					<s:option value="China">Other</s:option>
+					</s:select>
+					<td><s:errors path="country" element="div" cssClass="error" /></td>
+			</tr>
+			<tr>
+			<td>Address:</td>
+			<td><s:textarea path="address"/></td>
+			</tr>
+		</table>
 		
 		<input type="submit" value="Save Employee" />
 		

@@ -5,11 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>List Employees</title>
 </head>
 <body>
+
 	<h1>List Employees</h1>
-	<button onclick="window.location.href='showFormAddEmployee.html'">Add Employee</button>
+	<hr />
+	<p>
+		<a href="/springmybatis/">Return Index</a>
+	</p>
+	<hr />
+	<button onclick="window.location.href='showFormAddEmployee.html'">Add
+		Employee</button>
 
 	<div>
 		<table border="1">
@@ -23,19 +30,19 @@
 				<th>Action</th>
 			</tr>
 			<c:forEach items="${listemployees}" var="e">
-			
+
 				<c:url var="deleteLink" value="/deleteemployee">
-				
+
 					<c:param name="employeeId" value="${e.id}" />
-				
+
 				</c:url>
-				
+
 				<c:url var="updateLink" value="/editemployee">
-				
+
 					<c:param name="employeeId" value="${e.id}" />
-				
+
 				</c:url>
-			
+
 				<tr>
 					<td>${e.fullname}</td>
 					<td>${e.email}</td>
@@ -43,9 +50,9 @@
 					<td>${e.hobbies}</td>
 					<td>${e.country}</td>
 					<td>${e.address}</td>
-					<td>
-					<a href="${updateLink}">Update</a> |
-					<a href="${deleteLink}" onclick="if(!(confirm('Are you sure want to delete the record?')))return false;">Delete</a></td>
+					<td><a href="${updateLink}">Update</a> | <a
+						href="${deleteLink}"
+						onclick="if(!(confirm('Are you sure want to delete the record?')))return false;">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>
