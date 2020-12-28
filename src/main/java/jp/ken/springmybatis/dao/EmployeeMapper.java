@@ -53,5 +53,23 @@ public class EmployeeMapper {
 		session.commit();
 		session.close();
 	}
+	
+	public List<Employee> getVagueAnd(Employee employee) {
+
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		List<Employee> employeeList = session.selectList("getVagueAnd",employee);
+		session.commit();
+		session.close();
+		return employeeList;
+	}
+	
+	public List<Employee> getVagueOr(Employee employee) {
+
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		List<Employee> employeeList = session.selectList("getVagueOr",employee);
+		session.commit();
+		session.close();
+		return employeeList;
+	}
 
 }

@@ -6,7 +6,34 @@ import org.hibernate.validator.constraints.NotEmpty;
 import jp.ken.springmybatis.model.ErrorCheckGroup1;
 
 public class Employee {
+	
+	private String vagueName;
+	private String vagueEmail;
+	private String vagueGender;
+	
+	public String getVagueEmail() {
+		return vagueEmail;
+	}
 
+	public void setVagueEmail(String vagueEmail) {
+		this.vagueEmail = vagueEmail;
+	}
+
+	public String getVagueGender() {
+		return vagueGender;
+	}
+
+	public void setVagueGender(String vagueGender) {
+		this.vagueGender = vagueGender;
+	}
+
+	public String getVagueName() {
+		return vagueName;
+	}
+
+	public void setVagueName(String vagueName) {
+		this.vagueName = vagueName;
+	}
 
 	private Integer id;
 	

@@ -58,7 +58,7 @@
 					<form:option value="Japan">Japan</form:option>
 					<form:option value="America">America</form:option>
 					<form:option value="China">China</form:option>
-					<form:option value="China">Other</form:option>
+					<form:option value="Other">Other</form:option>
 					</form:select>
 					<td><form:errors path="country" element="div" cssClass="error" /></td>
 				</td>

@@ -15,7 +15,6 @@
 		<result property="coutry" column="coutry" />
 		<result property="address" column="address" />
 
-
 	</resultMap>
 
 	<select id="getAllEmployees" resultType="employee" resultMap="result">
@@ -27,13 +26,14 @@
 	<insert id="insertEmployee" parameterType="employee"
 		keyProperty="id" useGeneratedKeys="true">
 		INSERT INTO employee(fullname,
-			email, gender, hobbies, country, address)
+		email, gender, hobbies, country, address)
 		VALUES(#{fullname},#{email},#{gender},#{hobbies},#{country},#{address})
 	</insert>
 
 	<delete id="deleteEmployee" parameterType="int">
 
-		DELETE FROM employee WHERE id = #{employeeId}
+		DELETE FROM employee
+		WHERE id = #{employeeId}
 
 	</delete>
 
@@ -45,29 +45,49 @@
 	</select>
 
 	<update id="updateEmployee" parameterType="employee">
-	
-	UPDATE employee SET 
-	fullname = #{fullname},
-	email = #{email},
-	gender = #{gender},
-	hobbies = #{hobbies},
-	country = #{country},
-	address = #{address}
-	
-	WHERE id = #{id}
-	
-	</update>
-	
-	<select id="getByName" resultType="employee" resultMap="result">
 
-		SELECT * FROM employee 
-		WHERE 
-			fullname　like '%#{employee}%'
+		UPDATE employee SET
+		fullname = #{fullname},
+		email = #{email},
+		gender = #{gender},
+		hobbies =
+		#{hobbies},
+		country = #{country},
+		address = #{address}
+
+		WHERE id = #{id}
+
+	</update>
+
+	<select id="getVagueAnd" parameterType="employee" resultType="employee" resultMap="result">
+	<!-- parameterType　は引数があるときに設定する -->
+
+		SELECT * FROM employee
+		WHERE
+		fullname LIKE CONCAT('%', #{vagueName},'%')
+		AND
+		email LIKE CONCAT('%', #{vagueEmail}, '%')
+		AND
+		gender LIKE CONCAT('%', #{vagueGender}, '%') 
+
+		<!-- CONACTで文字を連結しないとエラーになる -->
 
 	</select>
+	
+	<select id="getVagueOr" parameterType="employee" resultType="employee" resultMap="result">
+	<!-- parameterType　は引数があるときに設定する -->
 
+		SELECT * FROM employee
+		WHERE
+		fullname LIKE CONCAT('%', #{vagueName},'%')
+		OR
+		email LIKE CONCAT('%', #{vagueEmail}, '%')
+		OR
+		gender LIKE CONCAT('%', #{vagueGender}, '%') 
 
+		<!-- CONACTで文字を連結しないとエラーになる -->
 
+	</select>
 
 
 
